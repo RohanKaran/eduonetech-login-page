@@ -2,7 +2,6 @@ import {
   Alert,
   Button,
   Card,
-  Container,
   FormControl,
   FormHelperText,
   Grid,
@@ -15,6 +14,7 @@ import {useAuth} from "../contexts/AuthContext";
 import {useNavigate} from "react-router-dom";
 import {purple} from "@mui/material/colors";
 import * as PropTypes from "prop-types";
+import {FaEnvelope, FaKey} from "react-icons/fa";
 export default function Signup() {
 
   const [email, setEmail] = useState()
@@ -83,16 +83,16 @@ export default function Signup() {
                   { error!=="" && <Alert severity="error">{error}</Alert>}
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth onChange={e => setEmail(e.target.value)}>
-                      <InputLabel htmlFor="my-input">Email address</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaEnvelope/> Email address</InputLabel>
                       <Input id="my-input" type={'email'} required aria-describedby="my-helper-text"
                       />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setPassword(e.target.value)}>
-                      <InputLabel htmlFor="my-input">Password</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaKey/> Password</InputLabel>
                       <Input id="my-input" type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setConfirmPassword(e.target.value)}>
-                      <InputLabel htmlFor="my-input">Confirm Password</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaKey/> Confirm Password</InputLabel>
                       <Input id="my-input" type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <ColorButton variant={'contained'} type={'submit'}>

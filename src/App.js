@@ -1,5 +1,5 @@
 import './App.css'
-import {Container, Link} from "@mui/material";
+import {Button, Card, Container, Link} from "@mui/material";
 import {useAuth} from "./contexts/AuthContext";
 function App() {
   const {currentUser} = useAuth()
@@ -7,17 +7,25 @@ function App() {
   console.log(currentUser)
   return (
       <>
-        <Container>
+        <Container
+          style={{height:'100vh', justifyContent:'center', alignItems:'center', paddingTop:'20%'}}
+        >
           {currentUser ?
-            <div>
-              {currentUser.email}
-              {JSON.stringify(currentUser.emailVerified)}
-              <Link onClick={() => logout()}>
+            <div align={'center'}>
+              <Card style={{maxWidth:'200px', textAlign:'left', padding:'2rem'}}>
+                <b>Current Status: </b>Logged in
+                <br/>
+                <b>Email: </b>{currentUser.email}
+                <br/>
+                <b>Account Verified:</b>{currentUser.emailVerified ? ' Yes' : ' No'}
+              </Card>
+
+              <Button onClick={() => logout()} style={{color:'whitesmoke'}}>
                 Logout
-              </Link>
+              </Button>
             </div> :
             <div>
-              You are not logged in. Please <Link href={'/login'}>login</Link>
+              You are not logged in. Please <Link href={'/login'} style={{color:'whitesmoke'}}>login</Link>
             </div>}
 
 

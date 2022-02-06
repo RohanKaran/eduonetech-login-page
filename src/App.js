@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-
+import './App.css'
+import {Container, Link} from "@mui/material";
+import {useAuth} from "./contexts/AuthContext";
 function App() {
+  const {currentUser} = useAuth()
+  const {logout} = useAuth()
+  console.log(currentUser)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <Container>
+          {currentUser ?
+            <div>
+              {currentUser.email}
+              {JSON.stringify(currentUser.emailVerified)}
+              <Link onClick={() => logout()}>
+                Logout
+              </Link>
+            </div> :
+            <div>
+              You are not logged in. Please <Link href={'/login'}>login</Link>
+            </div>}
+
+
+        </Container>
+      </>
   );
 }
 

@@ -35,7 +35,10 @@ export default function Signup() {
       return setError("Password length must be at least 6!")
     }
     await signup(email, password)
-      .then(() => nav(`/`))
+      .then((userCredential) => {
+        userCredential.user.sendEmailVerification()
+        nav(`/`)
+      })
       .catch(error => {
       setError((error.code))
       console.log((error))

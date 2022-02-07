@@ -81,23 +81,23 @@ export default function Signup() {
                 </div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div className={'right-grid'} >
+                <div className={'right-grid'} style={{paddingTop:'3rem'}}>
                   <h1 className={'heading'}>
                     Sign up
                   </h1>
                   { error!=="" && <Alert severity="error">{error}</Alert>}
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth onChange={e => setEmail(e.target.value)}>
-                      <InputLabel htmlFor="my-input"><FaEnvelope/> Email address</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaEnvelope/>&nbsp; Email address</InputLabel>
                       <Input required aria-describedby="my-helper-text"
                       />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setPassword(e.target.value)}>
-                      <InputLabel htmlFor="my-input"><FaKey/> Password</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaKey/>&nbsp; Password</InputLabel>
                       <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setConfirmPassword(e.target.value)}>
-                      <InputLabel htmlFor="my-input"><FaKey/> Confirm Password</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaKey/>&nbsp; Confirm Password</InputLabel>
                       <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <ColorButton variant={'contained'} type={'submit'}>

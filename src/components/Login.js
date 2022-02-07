@@ -14,6 +14,7 @@ import {useAuth} from "../contexts/AuthContext";
 import {useNavigate} from "react-router-dom";
 import * as PropTypes from "prop-types";
 import {purple} from "@mui/material/colors";
+import {FaEnvelope, FaKey} from "react-icons/fa";
 
 const ColorButton = styled(Button)(({ theme }) => ({
   color: theme.palette.getContrastText(purple[500]),
@@ -79,12 +80,12 @@ export default function Login() {
                   { error!=="" && <Alert severity="error">{error}</Alert>}
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth onChange={e => setEmail(e.target.value)}>
-                      <InputLabel htmlFor="my-input">Email address</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaEnvelope/>&nbsp; Email address</InputLabel>
                       <Input type={'email'} required aria-describedby="my-helper-text"
                       />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setPassword(e.target.value)}>
-                      <InputLabel htmlFor="my-input">Password</InputLabel>
+                      <InputLabel htmlFor="my-input"><FaKey/>&nbsp; Password</InputLabel>
                       <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <ColorButton variant={'contained'} type={'submit'}>

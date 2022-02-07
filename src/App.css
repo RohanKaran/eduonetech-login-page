@@ -35,8 +35,9 @@
   width: 70%;
   height: 100%;
   padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding-bottom: 5rem;
   text-align: left;
+  align-items: center;
 }
 button {
   margin-top: 3rem !important;
@@ -53,6 +54,7 @@ button {
 .MuiInputLabel-formControl svg {
   height: 1.2rem !important;
   vertical-align: text-top;
+  fill: black !important;
 }
 .heading{
   font-size: 2.5rem;

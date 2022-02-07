@@ -2,9 +2,7 @@ import {
   Alert,
   Button,
   Card,
-  Container,
   FormControl,
-  FormHelperText,
   Grid,
   Input,
   InputLabel, Link,
@@ -43,7 +41,7 @@ export default function Login() {
     await login(email, password)
       .then(() => nav(`/`))
       .catch(err => {
-        setError((err.code))
+        setError("Invalid email or password!")
         console.log((err))
       })
   }
@@ -68,7 +66,7 @@ export default function Login() {
                       Don't have an account?&nbsp;
                     </span>
                     <Link href={`/signup`}>
-                       {' '}Signup
+                       Create one
                     </Link>
                   </Typography>
                 </div>
@@ -82,12 +80,12 @@ export default function Login() {
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth onChange={e => setEmail(e.target.value)}>
                       <InputLabel htmlFor="my-input">Email address</InputLabel>
-                      <Input id="my-input" type={'email'} required aria-describedby="my-helper-text"
+                      <Input type={'email'} required aria-describedby="my-helper-text"
                       />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setPassword(e.target.value)}>
                       <InputLabel htmlFor="my-input">Password</InputLabel>
-                      <Input id="my-input" type={'password'} required aria-describedby="my-helper-text" />
+                      <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <ColorButton variant={'contained'} type={'submit'}>
                       Login

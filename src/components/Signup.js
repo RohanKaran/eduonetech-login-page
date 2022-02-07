@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   FormControl,
-  FormHelperText,
   Grid,
   Input,
   InputLabel,
@@ -26,8 +25,14 @@ export default function Signup() {
   
   const handleSubmit = async (e) => {
     e.preventDefault()
+    if (!(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email))) {
+      return setError("Enter a valid email!")
+    }
     if (password !== confirmPassword){
       return setError("Password do not match!")
+    }
+    if (password.length < 6){
+      return setError("Password length must be at least 6!")
     }
     await signup(email, password)
       .then(() => nav(`/`))
@@ -84,16 +89,16 @@ export default function Signup() {
                   <form onSubmit={handleSubmit}>
                     <FormControl fullWidth onChange={e => setEmail(e.target.value)}>
                       <InputLabel htmlFor="my-input"><FaEnvelope/> Email address</InputLabel>
-                      <Input id="my-input" type={'email'} required aria-describedby="my-helper-text"
+                      <Input required aria-describedby="my-helper-text"
                       />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setPassword(e.target.value)}>
                       <InputLabel htmlFor="my-input"><FaKey/> Password</InputLabel>
-                      <Input id="my-input" type={'password'} required aria-describedby="my-helper-text" />
+                      <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <FormControl fullWidth onChange={e => setConfirmPassword(e.target.value)}>
                       <InputLabel htmlFor="my-input"><FaKey/> Confirm Password</InputLabel>
-                      <Input id="my-input" type={'password'} required aria-describedby="my-helper-text" />
+                      <Input type={'password'} required aria-describedby="my-helper-text" />
                     </FormControl>
                     <ColorButton variant={'contained'} type={'submit'}>
                       Register

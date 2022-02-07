@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import {AuthProvider} from "./contexts/AuthContext";
@@ -11,11 +11,13 @@ import {AuthProvider} from "./contexts/AuthContext";
 ReactDOM.render(
   <AuthProvider>
       <BrowserRouter>
-          <Routes>
-              <Route path={'/'} exact element={<App />}/>
-              <Route path={'/login'} exact element={<Login />}/>
-              <Route path={'/signup'} exact element={<Signup />}/>
-          </Routes>
+        <Routes>
+          <Route exact path={'/'} element={<App />}/>
+          <Route path={'/*'} element={<Navigate to={'/'} />}/>
+          <Route path={'/login'} element={<Login />}/>
+          <Route path={'/signup'} element={<Signup />}/>
+          <Route key={'index'} element={<Navigate from={'*'} to={'/'}/>}/>
+        </Routes>
       </BrowserRouter>
   </AuthProvider>,
   document.getElementById('root')
